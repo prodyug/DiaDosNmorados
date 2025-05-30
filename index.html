@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Bia 💖</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #ffe4e1, #fff0f5);
+      overflow-x: hidden;
+    }
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .envelope {
+      transition: all 0.3s ease;
+    }
+    .envelope:hover {
+      transform: scale(1.1) rotate(-5deg);
+    }
+  </style>
+</head>
+<body class="text-pink-700 font-sans">
+  <!-- Corações caindo -->
+  <script>
+    const hearts = [];
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+      heart.innerText = '❤️';
+      document.body.appendChild(heart);
+      hearts.push(heart);
+    }
+  </script>
+
+  <!-- Música -->
+  <audio id="bgMusic" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <!-- Tela inicial -->
+  <section class="min-h-screen flex flex-col items-center justify-center text-center px-4">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Feliz Dia dos Namorados, Bia! 💖</h1>
+    <p class="text-lg mb-6">Clique no botão abaixo para ver algo muito especial...</p>
+    <a href="#historia" class="bg-pink-500 hover:bg-pink-600 text-white py-2 px-6 rounded-full shadow-lg transition">Ver nossa história</a>
+  </section>
+
+  <!-- Nossa História -->
+  <section id="historia" class="py-16 px-6 bg-white rounded-t-3xl">
+    <h2 class="text-3xl font-bold text-center mb-10">Nossa História 💑</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="bg-pink-100 p-4 rounded-xl shadow">
+        <img src="imagens/foto1.jpg" alt="Foto 1">
+        <p class="text-center">O dia em que tudo começou...</p>
+      </div>
+      <div class="bg-pink-100 p-4 rounded-xl shadow">
+        <img src="imagens/foto2.jpg" alt="Foto 2" class="rounded-xl mb-2">
+        <p class="text-center">Passeios</p>
+      </div>
+      <div class="bg-pink-100 p-4 rounded-xl shadow">
+        <img src="imagens/foto3.jpg" alt="Foto 3" class="rounded-xl mb-2">
+        <p class="text-center">E os momentos que aqueceram o coração</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cartinha -->
+  <section class="py-16 px-6 bg-[#fff0f5]">
+    <h2 class="text-3xl font-bold text-center mb-10">Uma cartinha pra você ✨</h2>
+
+    <!-- Cartinha fechada -->
+    <div id="envelope" class="envelope flex flex-col items-center cursor-pointer">
+      <div class="text-7xl mb-2 hover:scale-110 transition-transform duration-300">💌</div>
+      <p class="text-pink-700 text-lg animate-pulse">Clique na cartinha 💌</p>
+    </div>
+
+    <!-- Conteúdo escondido da carta -->
+    <div id="mensagem" class="hidden max-w-3xl mx-auto bg-white rounded-3xl shadow-2xl border-4 border-pink-200 p-10 relative overflow-hidden mt-8">
+      <div class="absolute -top-5 -left-5 w-32 h-32 bg-pink-100 rounded-full opacity-40"></div>
+      <div class="absolute -bottom-5 -right-5 w-32 h-32 bg-pink-100 rounded-full opacity-40"></div>
+      <div class="absolute top-5 right-8 text-5xl animate-pulse">💌</div>
+      <p class="text-lg leading-relaxed text-pink-700 text-center">
+        Bia, <br><br>
+        Desde que você entrou na minha vida, tudo ganhou mais cor, mais sentido e mais amor. Você é como aquele raio de sol que aquece, como aquela brisa suave que acalma e como a estrela que ilumina até as noites mais escuras. ✨
+        <br><br>
+        Seu sorriso é meu lugar favorito no mundo, e seus olhos carregam um universo inteiro que me faz querer me perder e me encontrar em você todos os dias. Cada momento ao seu lado é uma lembrança preciosa que guardo no coração com todo carinho.
+        <br><br>
+        Te amar é fácil... é como respirar, como sorrir sem motivo, como ouvir minha música preferida em um dia perfeito. Você é e sempre será meu lugar seguro, minha melhor escolha, meu amor, minha vida. ❤️
+        <br><br>
+        Obrigado por existir e por me permitir fazer parte da sua história. Eu te amo além das palavras, além do que posso descrever... Te amo com todo meu coração. 
+        <br><br>
+        Com todo amor do mundo, <br>
+        <strong>Hugo 💌</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="py-10 text-center text-sm text-pink-600">
+    Feito com muito amor por Hugo 💕
+  </footer>
+
+  <script>
+    const btn = document.querySelector('a[href="#historia"]');
+    const music = document.getElementById('bgMusic');
+    music.volume = 0.2; // Volume de 0 a 1 (aqui está 20%)
+
+    btn.addEventListener('click', () => {
+      music.play();
+    });
+
+    // Funcionalidade da cartinha
+    const envelope = document.getElementById('envelope');
+    const mensagem = document.getElementById('mensagem');
+
+    envelope.addEventListener('click', () => {
+      mensagem.classList.remove('hidden');
+      mensagem.classList.add('animate-fadeIn');
+      
+      // Rolando suavemente até a mensagem
+      mensagem.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
